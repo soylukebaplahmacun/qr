@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soylu Kebap Menü</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #d32f2f;
+      padding: 1rem;
+      text-align: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header img {
+      max-width: 120px;
+      border-radius: 50%;
+      border: 2px solid white;
+      margin-bottom: 0.5rem;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    nav ul li {
+      margin: 0;
+    }
+    nav ul li a {
+      display: block;
+      padding: 1rem 1.5rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    nav ul li a:hover {
+      background-color: #d32f2f;
+      color: #fff;
+      transition: 0.3s;
+    }
+    main {
+      max-width: 600px;
+      margin: 1rem auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 5px;
+    }
+    main h2 {
+      text-align: center;
+      margin-top: 0;
+      color: #333;
+    }
+    .menu-button {
+      display: inline-block;
+      background: #d32f2f;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      margin: 0.3rem;
+      border-radius: 5px;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .menu-button:hover {
+      background: #b71c1c;
+    }
+    #menuDisplay {
+      margin-top: 1rem;
+      min-height: 400px;
+      background: #eee;
+      padding: 1rem;
+      box-sizing: border-box;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center; 
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="https://github.com/enesaknc/soylu/blob/main/soylu%20logo%202.png?raw=true" alt="Soylu Kebap Logo" />
+    <h1>Soylu Kebap</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#menuler">Menüler</a></li>
+    </ul>
+  </nav>
+
+  <main id="menuler">
+    <h2>Menülerimiz</h2>
+    
+    <div style="text-align: center;">
+      <button class="menu-button" onclick="showMenu('kebap')">Kebap Çeşitleri</button>
+      <button class="menu-button" onclick="showMenu('etdoner')">Et Döner</button>
+      <button class="menu-button" onclick="showMenu('firin')">Fırın Ürünleri</button>
+      <button class="menu-button" onclick="showMenu('kampanya')">Kampanyalar</button>
+      <button class="menu-button" onclick="showMenu('salata')">Salata & Ara Sıcaklar</button>
+      <button class="menu-button" onclick="showMenu('tatliicecek')">Tatlı & İçecekler</button>
+    </div>
+
+    <div id="menuDisplay"></div>
+  </main>
+
+  <footer>
+    © 2025 Soylu Kebap. Tüm hakları saklıdır.
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      showMenu('kebap');
+    });
+
+    function showMenu(type) {
+      const container = document.getElementById('menuDisplay');
+      container.innerHTML = '';
+
+      const images = {
+        kebap: "https://github.com/enesaknc/soylu/blob/main/kebap.png?raw=true",
+        etdoner: "https://github.com/enesaknc/soylu/blob/main/et%20doner.png?raw=true",
+        firin: "https://github.com/enesaknc/soylu/blob/main/firin.png?raw=true",
+        kampanya: "https://github.com/enesaknc/soylu/blob/main/kampanya.png?raw=true",
+        salata: "https://github.com/enesaknc/soylu/blob/main/salata%20ara%20sicak.png?raw=true",
+        tatliicecek: "https://github.com/enesaknc/soylu/blob/main/tatli%20icecek.png?raw=true"
+      };
+
+      if(images[type]) {
+        const img = document.createElement('img');
+        img.src = images[type];
+        img.style.width = '100%';
+        img.style.maxWidth = '600px';
+        img.alt = type;
+        container.appendChild(img);
+      } else {
+        container.textContent = "Menü bulunamadı.";
+      }
+    }
+  </script>
+
+</body>
+</html>
